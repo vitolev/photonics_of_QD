@@ -1,0 +1,256 @@
+%
+% Stil za Matriko
+%
+% Zadnja verzija je na voljo na naslovu: http://matrika.fmf.uni-lj.si
+%
+% Pripravili Vladimir Bensa in urednistvo Matrike
+%
+% Verzija 2.0: 25. 1. 2015.
+%
+\ProvidesPackage{matrika}[2015/01/25 2.0]
+%
+\RequirePackage[T1]{fontenc}
+\RequirePackage[slovene]{babel}
+\RequirePackage{fancyhdr,ifthen}
+\RequirePackage{oznake,pisave,ae,aecompl}
+\RequirePackage[labelfont=bf,labelsep=period,font=footnotesize]{caption}
+%
+\newboolean{old}
+\setboolean{old}{false}
+\DeclareOption{old}{\setboolean{old}{true}}
+\newlength{\MATrazmik}
+\setlength{\MATrazmik}{12pt} 
+\DeclareOption{draft}{\addtolength{\MATrazmik}{0pt}}
+\newboolean{final}
+\setboolean{final}{false}
+\DeclareOption{final}{\setboolean{final}{true}}
+%\newboolean{popoglavjih}
+%\setboolean{popoglavjih}{false}
+%\DeclareOption{popoglavjih}{\setboolean{popoglavjih}{true}}
+\newboolean{enotno}
+\setboolean{enotno}{false}
+\DeclareOption{enotno}{\setboolean{enotno}{true}}
+\newboolean{poizrekih}
+\setboolean{poizrekih}{false}
+\DeclareOption{poizrekih}{\setboolean{poizrekih}{true}}
+\newboolean{ams}
+\setboolean{ams}{false}
+\DeclareOption{ams}{\setboolean{ams}{true}}
+\newboolean{frame}
+\setboolean{frame}{false}
+\DeclareOption{frame}{\setboolean{frame}{true}}
+%
+\newcommand{\MATnaslov}[0]{Naslov}
+\newcommand{\MATnaslovcek}[0]{Kratek naslov}
+\newcommand{\naslov}[2][]{\renewcommand{\MATnaslov}[0]{#2}\ifthenelse{\equal{#1}{}}{\renewcommand{\MATnaslovcek}[0]{#2}}{\renewcommand{\MATnaslovcek}[0]{#1}}}
+\newcommand{\MATavtor}[0]{Avtor}
+\newcommand{\MATavtorcek}[0]{Avtorji}
+\newcommand{\avtor}[2][]{\renewcommand{\MATavtor}[0]{#2}\ifthenelse{\equal{#1}{}}{\renewcommand{\MATavtorcek}[0]{#2}}{\renewcommand{\MATavtorcek}[0]{#1}}}
+\newcommand{\MATavmes}[0]{}
+\newcommand{\vmesnik}[1]{\renewcommand{\MATavmes}[0]{#1}}
+\newcommand{\MATinstitucija}[0]{Ustanova}
+\newcommand{\institucija}[1]{\ifthenelse{\boolean{old}}{\renewcommand{\MATinstitucija}[0]{}}{\renewcommand{\MATinstitucija}[0]{#1}}}
+\newcommand{\klasifikacija}[2][]{\ifthenelse{\equal{#1}{MSC}}{\newcommand{\MATklasifikacija}[0]{Math.\ Subj.\ Class.\ (2010): #2}}
+{\ifthenelse{\equal{#1}{PACS}}{\newcommand{\MATklasifikacija}[0]{PACS: #2}}{\newcommand{\MATklasifikacija}[0]{#2}}}}
+\newcommand{\izvlecek}[1]{\newcommand{\MATizvlecek}[0]{#1}}
+\renewcommand{\title}[1]{\newcommand{\MATtitle}[0]{#1}}
+\renewcommand{\abstract}[1]{\newcommand{\MATabstract}[0]{#1}}
+\newcommand{\MATstevilka}[0]{}
+\newcommand{\MAT}[3]{\renewcommand{\MATstevilka}[0]{\textbf{#2} (#3) #1}}
+%\ExecuteOptions{old}
+\ProcessOptions
+%
+% OBZORNIK
+%
+\paperwidth 21cm
+\paperheight 29.7cm
+%
+\textwidth 166mm
+\textheight 246mm
+\oddsidemargin -3mm
+\evensidemargin -3mm
+\topmargin -1cm
+\headsep 4.5mm
+\footskip 9.5mm
+%
+%\ifthenelse{\boolean{frame}}{\RequirePackage[dvips,frame]{crop}}{\RequirePackage[dvips,cam]{crop}}
+\ifthenelse{\boolean{frame}}{\RequirePackage[pdftex,frame]{crop}}{\RequirePackage[pdftex,cam]{crop}}
+%
+\newcommand{\paginafont}{\helfamily}
+%
+% SEZNAM
+%
+\addtolength{\leftmargini}{-2.5mm}%
+\newcounter{seznam}%
+\newenvironment{seznam}%
+{\begin{list}{\arabic{seznam}.}{\addtolength{\leftmargin}{-2mm}\addtolength{\itemsep}{-1pt}\addtolength{\topsep}{-1pt}\rightmargin=0pt}\usecounter{seznam}}
+{\end{list}}
+%
+% STRUKTURA POGLAVIJ iz razreda article
+%
+\makeatletter
+\renewcommand{\thesection}{\@arabic\c@section.\hspace*{-2mm}}
+\renewcommand{\thesubsection}{\@arabic\c@section.\@arabic\c@subsection\hspace*{-2mm}}
+\renewcommand{\thesubsubsection}{\@arabic\c@section.\@arabic\c@subsection.\@arabic\c@subsubsection\hspace*{-2mm}}
+\renewcommand{\section}{\@startsection{section}{1}{\z@}%
+                       {-3.5ex \@plus -1ex \@minus -.2ex}%
+                       {2.3ex \@plus.2ex}%
+                       {\normalfont\normalsize\centering\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{\z@}%
+                          {-3.25ex\@plus -1ex \@minus -.2ex}%
+                          {1.5ex \@plus .2ex}%
+                          {\normalfont\normalsize\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{\z@}%
+                             {-3.25ex\@plus -1ex \@minus -.2ex}%
+                             {1.5ex \@plus .2ex}%
+                             {\normalfont\small\bfseries}}
+\renewcommand{\paragraph}{\@startsection{paragraph}{4}{\z@}%
+                         {3.25ex \@plus1ex \@minus.2ex}%
+                         {-1em}%
+                         {\normalfont\normalsize\bfseries}}
+\renewcommand{\subparagraph}{\@startsection{subparagraph}{5}{\parindent}%
+                            {3.25ex \@plus1ex \@minus .2ex}%
+                            {-1em}%
+                            {\normalfont\normalsize\bfseries}}%
+\renewenvironment{thebibliography}[1]
+     {\bigskip\centering\MakeUppercase{\refname}\footnotesize%
+      \list{\@biblabel{\@arabic\c@enumiv}}%
+           {\addtolength{\itemsep}{-2pt}%
+            \settowidth\labelwidth{\@biblabel{#1}}%
+            \leftmargin\labelwidth
+            \advance\leftmargin\labelsep
+            \@openbib@code
+            \usecounter{enumiv}%
+            \let\p@enumiv\@empty
+            \renewcommand\theenumiv{\@arabic\c@enumiv}}%
+      \sloppy
+      \clubpenalty4000
+      \@clubpenalty \clubpenalty
+      \widowpenalty4000%
+      \sfcode`\.\@m}
+     {\def\@noitemerr
+       {\@latex@warning{Empty `thebibliography' environment}}%
+      \endlist}
+\makeatother
+%
+% IZREKI
+%
+\ifthenelse{\boolean{ams}}{\RequirePackage[amsmath]{ntheorem}}{\RequirePackage{ntheorem}}
+\theoremseparator{.}
+\ifthenelse{\boolean{poizrekih}}
+{
+\newtheorem{izrek}{Izrek}
+\newtheorem{lema}{Lema}
+\newtheorem{trditev}{Trditev}
+\newtheorem{posledica}{Posledica}
+}
+{
+\newtheorem{izrek}{Izrek}
+\newtheorem{lema}[izrek]{Lema}
+\newtheorem{trditev}[izrek]{Trditev}
+\newtheorem{posledica}[izrek]{Posledica}
+}
+\ifthenelse{\boolean{enotno}}
+{
+\theoremstyle{nonumberplain}
+\newtheorem{izrek0}[izrek]{Izrek}
+\newtheorem{lema0}[izrek]{Lema}
+\newtheorem{trditev0}[izrek]{Trditev}
+\newtheorem{konstrukcija0}[izrek]{Konstrukcija}
+\theoremstyle{plain}
+\theorembodyfont{\upshape}
+\newtheorem{primer}[izrek]{Primer}
+\newtheorem{zgled}[izrek]{Zgled}
+\newtheorem{definicija}[izrek]{Definicija}
+\newtheorem{definicije}[izrek]{Definicije}
+\newtheorem{lastnost}[izrek]{Lastnost}
+\newtheorem{pripomba}[izrek]{Pripomba}
+\newtheorem{opomba}[izrek]{Opomba}
+\newtheorem{naloga}[izrek]{Naloga}
+\theoremstyle{nonumberplain}
+\newtheorem{primer0}[izrek]{Primer}
+\newtheorem{definicija0}[izrek]{Definicija}
+\newtheorem{pripomba0}[izrek]{Pripomba}
+\newtheorem{opomba0}[izrek]{Opomba}
+}
+{
+\theoremstyle{nonumberplain}
+\newtheorem{izrek0}{Izrek}
+\newtheorem{lema0}{Lema}
+\newtheorem{trditev0}{Trditev}
+\newtheorem{konstrukcija0}{Konstrukcija}
+\theoremstyle{plain}
+\theorembodyfont{\upshape}
+\newtheorem{primer}{Primer}
+\newtheorem{zgled}{Zgled}
+\newtheorem{definicija}{Definicija}
+\newtheorem{definicije}[definicija]{Definicije}
+\newtheorem{lastnost}{Lastnost}
+\newtheorem{pripomba}{Pripomba}
+\newtheorem{opomba}{Opomba}
+\newtheorem{naloga}{Naloga}
+\theoremstyle{nonumberplain}
+\newtheorem{primer0}{Primer}
+\newtheorem{definicija0}{Definicija}
+\newtheorem{pripomba0}{Pripomba}
+\newtheorem{opomba0}{Opomba}
+}
+\theoremheaderfont{\itshape}
+\theorembodyfont{\upshape}
+\newtheorem{dokaz}{Dokaz}
+\newtheorem{dokazizreka}{Dokaz izreka 2}
+\newtheorem{dokazskica}{Skica dokaza}
+\newtheorem{odgovor}{Odgovor}
+\newtheorem{resitev0}{Re\v{s}itev}
+\theoremstyle{plain}
+\newtheorem{resitev}{Re\v{s}itev}
+%
+% GLAVA �LANKA
+%
+\newcommand{\glava}[0]{
+\thispagestyle{plain}
+\baselineskip=13pt
+\begin{center}
+\textbf{\large\MakeUppercase{\MATnaslov}}\\[3mm]
+\MakeUppercase{\MATavtor}\\[3mm]
+\MATavmes
+{\small\MATinstitucija}
+\end{center}
+
+\ifthenelse{\equal{\MATklasifikacija}{}}
+{}
+{
+\vspace*{-1mm}
+\noindent
+{\footnotesize\MATklasifikacija}\\[-1mm]
+}
+
+\indent
+\baselineskip=11pt
+{\footnotesize\MATizvlecek}
+\medskip
+\begin{center}
+\textbf{\footnotesize\MakeUppercase{\MATtitle}}
+\end{center}
+
+\indent
+{\footnotesize\MATabstract}
+\medskip
+
+\baselineskip=\MATrazmik
+}
+%
+%
+% NAPISI NA STRANEH
+%
+\fancypagestyle{plain}{\fancyhf{}\fancyfoot[LE,RO]{\footnotesize\thepage}\fancyfoot[RE,LO]{\paginafont\footnotesize Matrika\ \MATstevilka}}
+%
+\pagestyle{fancy}
+\fancyhead[CE]{\paginafont\footnotesize\MATavtorcek}
+\fancyhead[CO]{\paginafont\footnotesize\MATnaslovcek}
+\fancyhead[L,R]{}
+\fancyfoot[LE,RO]{\footnotesize\thepage}
+\ifthenelse{\boolean{final}}{\fancyfoot[RE,LO]{\paginafont\footnotesize Matrika\ \MATstevilka}}{\fancyfoot[RE,LO]{\paginafont\footnotesize Matrika\ \MATstevilka}}
+\fancyfoot[C]{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
