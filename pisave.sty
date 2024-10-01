@@ -1,0 +1,69 @@
+%
+% Stil za uporabo dodatnih pisav v LaTeX-u
+%
+% Pripravil Vladimir Bensa
+%
+% Verzija 0.3:  3. 8. 2004. (Computer Modern, Helvetica)
+%         0.4: 13. 7. 2006. (Concrete Roman)
+%
+\ProvidesPackage{pisave}[2006/07/13 0.4]
+
+% Pisava (T1) Computer Modern Roman Bold Upright
+%
+\newcommand{\boldseries}{\usefont{T1}{cmr}{b}{n}}
+\newcommand{\textbold}[1]{{\boldseries #1}}
+
+% Pisava (T1) Computer Modern Roman Medium Upright Italics
+%
+\newcommand{\upitshape}{\usefont{T1}{cmr}{m}{ui}}
+\newcommand{\textupit}[1]{{\upitshape #1}}
+
+% Pisava (T1) Computer Modern Sans Serif Semi Bold Condensed Upright
+%
+\newcommand{\sfbcfont}{\usefont{T1}{cmss}{sbc}{n}}
+\newcommand{\textsfbc}[1]{{\sfbcfont #1}}
+
+% Pisava (T1) Computer Modern Dunhill Medium Upright
+%
+\newcommand{\dunfamily}{\usefont{T1}{cmdh}{m}{n}}
+\newcommand{\textdun}[1]{{\dunfamily #1}}
+
+% Pisava (T1) Computer Modern Fibonacci Medium Upright (+ Slanted)
+%
+\newcommand{\fibfamily}{\usefont{T1}{cmfib}{m}{n}}
+\newcommand{\textfib}[1]{{\fibfamily #1}}
+
+% Pisava (T1) Computer Modern Funny Roman Medium Upright (+ Italic)
+%
+\newcommand{\funfamily}{\usefont{T1}{cmfr}{m}{n}}
+\newcommand{\textfun}[1]{{\funfamily #1}}
+
+% Pisava (T1) Computer Modern Variable Width Typewriter Medium Upright (+ Italic)
+%
+\newcommand{\vttfamily}{\usefont{T1}{cmvtt}{m}{n}}
+\newcommand{\textvtt}[1]{{\vttfamily #1}}
+
+% Pisava (T1) Computer Modern Bright Medium Upright (+ Bold Extended + Slanted)
+%
+\newcommand{\brifamily}{\usefont{T1}{cmbr}{m}{n}}
+\newcommand{\textbri}[1]{{\brifamily #1}}
+
+% Pisava (T1) Computer Modern Typewriter Light Upright (+ Slanted)
+%
+\newcommand{\ttlfamily}{\usefont{T1}{cmtl}{m}{n}}
+\newcommand{\textttl}[1]{{\ttlfamily #1}}
+
+% Pisava (T1) Helvetica Medium Upright
+%
+\newcommand{\helfamily}{\usefont{T1}{phv}{m}{n}}
+\newcommand{\texthel}[1]{{\helfamily #1}}
+
+% Pisava (T1) Helvetica Bold Condensed Upright
+%
+\newcommand{\hebcfamily}{\usefont{T1}{phv}{bc}{n}}
+\newcommand{\texthebc}[1]{{\hebcfamily #1}}
+
+% Pisava (T1) Concrete Roman Medium Upright (+ Bold Extended + Slanted + Italics)
+%
+\newcommand{\ccrfamily}{\usefont{T1}{ccr}{m}{n}}
+\newcommand{\textccr}[1]{{\ccrfamily #1}}

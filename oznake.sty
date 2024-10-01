@@ -1,0 +1,77 @@
+%
+% Stil za uporabo dodatnih oznak v LaTeX-u
+%
+% Pripravil Vladimir Bensa
+% DMFA-zaloznistvo 2004-2009
+%
+% Verzija 1.10: 17. 11. 2009.
+%
+\ProvidesPackage{oznake}[2009/11/17 1.10]
+%
+\RequirePackage{amssymb}
+%
+% Matematicne oznake 
+%
+\newcommand{\NN}{\mathbb{N}} % naravna stevila
+\newcommand{\ZZ}{\mathbb{Z}} % cela stevila
+\newcommand{\QQ}{\mathbb{Q}} % racionalna stevila
+\newcommand{\RR}{\mathbb{R}} % realna stevila
+\newcommand{\CC}{\mathbb{C}} % kompleksna stevila
+\newcommand{\KK}{\mathbb{K}} % polje
+\newcommand{\PP}{\mathbb{P}} % prastevila
+\newcommand{\FF}{\mathbb{F}}
+\newcommand{\HH}{\mathbb{H}}
+%
+\newcommand{\ee}{\mathrm{e}} % osnova naravnega logaritma
+\newcommand{\ii}{\mathrm{i}} % koren iz -1
+%
+\newcommand{\manjse}{\leqslant} % relacija manjse ali enako
+\newcommand{\vecje}{\geqslant}  % relacija vecje ali enako
+%
+\newcommand{\im}{\mathop{\mathrm{im}}\nolimits}     % slika
+\newcommand{\rang}{\mathop{\mathrm{rang}}\nolimits} % rang
+\newcommand{\re}{\mathop{\mathrm{Re}}\nolimits}     % realni del
+\newcommand{\IM}{\mathop{\mathrm{Im}}\nolimits}     % imaginarni del
+\newcommand{\grad}{\mathop{\mathrm{grad}}\nolimits} % gradient
+\newcommand{\tr}{\mathop{\mathrm{tr}}\nolimits}     % sled
+\newcommand{\sign}{\mathop{\mathrm{sign}}\nolimits}
+\newcommand{\idim}{\mathop{\mathrm{idim}}\nolimits}
+\newcommand{\diam}{\mathop{\mathrm{diam}}\nolimits}
+\newcommand{\rot}{\mathop{\mathrm{rot}}\nolimits}   % rotor
+\newcommand{\Log}{\mathop{\mathrm{Log}}\nolimits}   % logaritem
+\newcommand{\cat}{\mathop{\mathrm{cat}}\nolimits}   % kategorija
+\newcommand{\Div}{\mathop{\mathrm{div}}\nolimits}   % divergenca
+\newcommand{\sgn}{\mathop{\mathrm{sgn}}\nolimits}
+\newcommand{\ind}{\mathop{\mathrm{ind}}\nolimits}   % indeks
+\newcommand{\red}{\mathop{\mathrm{red}}\nolimits}
+\newcommand{\am}{\mathop{\mathrm{am}}\nolimits}     % amplituda
+%
+\newcommand{\tg}{\mathop{\mathrm{tg}}\nolimits}         % kotne funkcije
+\newcommand{\ctg}{\mathop{\mathrm{ctg}}\nolimits}
+\newcommand{\arctg}{\mathop{\mathrm{arctg}}\nolimits}   % krozne funkcije
+\newcommand{\arcctg}{\mathop{\mathrm{arcctg}}\nolimits}
+\newcommand{\Arcsin}{\mathop{\mathrm{Arcsin}}\nolimits}
+\newcommand{\Arccos}{\mathop{\mathrm{Arccos}}\nolimits}
+\newcommand{\Arctg}{\mathop{\mathrm{Arctg}}\nolimits}
+\newcommand{\Arcctg}{\mathop{\mathrm{Arcctg}}\nolimits}
+\newcommand{\artanh}{\mathop{\mathrm{artanh}}\nolimits} % hiperbolicne funkcije
+\newcommand{\arsinh}{\mathop{\mathrm{arsinh}}\nolimits}
+\newcommand{\Arsh}{\mathop{\mathrm{Arsh}}\nolimits}
+\newcommand{\sh}{\mathop{\mathrm{sh}}\nolimits}
+\newcommand{\ch}{\mathop{\mathrm{ch}}\nolimits}
+\newcommand{\Th}{\mathop{\mathrm{th}}\nolimits}
+
+%
+\newcommand{\modulo}{\!\!\!\pmod} % malo popravljen modulo
+
+%
+\newcommand{\QED}{\vrule height1.5mm width1.5mm depth0pt} % konec dokaza
+%
+\newcommand{\vektor}[1]{\vbox{\ialign{##\crcr\rightharpoonupfill\crcr\noalign{\kern-1pt\nointerlineskip} $\hfil\displaystyle{#1}\hfil$\crcr}}}  % veliki vektor
+\def\rightharpoonupfill{$\mathsurround=0pt \mathord- \mkern-6mu \cleaders\hbox{$\mkern-2mu \mathord- \mkern-2mu$} \hfill\mkern-6mu \mathord\rightharpoonup$}
+\newcommand{\vek}[1]{\kern-1pt\vbox{\ialign{##\crcr\kern1pt\raise1.5pt\hbox{$\scriptscriptstyle\rightharpoonup$}\crcr\noalign{\kern-1pt\nointerlineskip} $\hfil\displaystyle{#1}\hfil$\crcr}}\hspace{-1pt}}  % mali vektor
+%
+% Razno
+%
+\newcommand{\odstavek}[0]{\hspace*{\parindent}} % zamik zacetka odstavka
+\newcommand{\konec}[0]{\phantom{..}}            % dodaten presledek ob koncu stavka
